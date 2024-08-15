@@ -40,7 +40,7 @@ If you want to change which hand controls which character, you need to hard-code
 
 The parameter `pyautogui.PAUSE = 0` is needed to eliminate the delay that PyAutoGUI automatically implements to prevent mouse lock when automating mouse clicks.
 
-You can find information about the ML model directly in this link: https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer
+You can find information about the "gesture_recognizer.task" ML model directly in this link: https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer
 
 ## Documentation
 
