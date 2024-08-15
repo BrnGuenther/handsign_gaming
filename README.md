@@ -23,16 +23,16 @@ This is a simple project for personal study on using popular computer vision lib
 ## Commands
 
 Your right hand is supposed to send commands to WaterGirl, controlling "wsd" keys with the following mapping:
-- Pointing Up for `d` (Running to the right)
-- Victory sign for `a` (Running to the left)
-- Closed Fist for `w` (Jumping)
-- Open Palm to cancel all movement (Stop)
+- ☝️ Pointing Up for `d` (Running to the right)
+- ✌️ Victory sign for `a` (Running to the left)
+- ✊ Closed Fist for `w` (Jumping)
+- ✋ Open Palm to cancel all movement (Stop)
   
 Your left hand is supposed to send commands to FireBoy, controlling "→←↑" keys with:
-- Pointing Up for `→` (Running to the right)
-- Victory sign for `←` (Running to the left)
-- Closed Fist for `↑` (Jumping)
-- Open Palm to cancel all movement (Stop)
+- ☝️ Pointing Up for `→` (Running to the right)
+- ✌️ Victory sign for `←` (Running to the left)
+- ✊ Closed Fist for `↑` (Jumping)
+- ✋ Open Palm to cancel all movement (Stop)
 
 If you want to change which hand controls which character, you need to hard-code the keys passed to PyAutoGUI's `KeyDown` and `KeyUp` methods.
 
