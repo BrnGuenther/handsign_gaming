@@ -5,16 +5,6 @@ import time
 
 pyautogui.PAUSE = 0
 
-translation_dict = {'Open_Palm':'Palma da Mao',
-                    'Thumbs_Up':'Joinha',
-                    'Thumbs_Down':'Negativo',
-                    'Pointing_Up':'Indicador (Andar)',
-                    'Victory':'Indicador e Medio (Recuar)',
-                    'None':'Nada',
-                    'Closed_Fist':'Punho (Pular)'
-                    }
-
-# Inicializar os módulos do MediaPipe
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
@@ -29,38 +19,31 @@ model_file = open('gesture_recognizer.task', "rb")
 model_data = model_file.read()
 model_file.close()
 
-# Configurar as opções do reconhecedor de gestos
 options = GestureRecognizerOptions(
     base_options=BaseOptions(model_asset_buffer=model_data),
     running_mode=VisionRunningMode.VIDEO,
     num_hands = 2
 )
-# Criar uma instância do GestureRecognizer
 with GestureRecognizer.create_from_options(options) as recognizer:
-    # Inicializar a captura de vídeo
     cap = cv.VideoCapture(0)
     
     timestamp = 0
     while True:
-        # Capturar frame por frame
         ret, frame = cap.read()
         
         if not ret:
             print("Can't receive frame (stream end?). Exiting ...")
             break
 
-        # Converter o frame para RGB
         rgb_frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         results = hands.process(rgb_frame)
 
-        # Desenhar as marcações das mãos
         if results.multi_hand_landmarks:
             for landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(frame, landmarks, mp_hands.HAND_CONNECTIONS)
 
-            #Coleta uma foto do video
             mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
-            # Processar o frame com o reconhecedor de gestos
+
             results_recognizer = recognizer.recognize_for_video(mp_image, timestamp)
             if results_recognizer.gestures:
                 first_hand_gesture = None
@@ -190,18 +173,15 @@ with GestureRecognizer.create_from_options(options) as recognizer:
                         pyautogui.keyUp('left')
                         
 
-        # Mostrar o resultado com os gestos reconhecidos
         desired_width = 750
         desired_height = 500
         resized_frame = cv.resize(frame, (desired_width, desired_height))
         cv.imshow('Gesture Recognition', resized_frame)
         
-        # Verificar se a tecla 'q' foi pressionada para sair
         if cv.waitKey(1) == ord('q'):
             break
 
         timestamp += 1
 
-    # Liberar a captura e fechar as janelas
     cap.release()
     cv.destroyAllWindows()
