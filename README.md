@@ -1,7 +1,7 @@
 ## Playing FireBoy and WaterGirl using Hand Sign Recognition
 
 <p align="center">
-  <img src="images-1.jpeg" alt="alt text" />
+  <img src="images/images.jpeg" alt="alt text" />
 </p>
 
 
