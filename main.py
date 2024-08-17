@@ -3,6 +3,13 @@ import mediapipe as mp
 import pyautogui
 import time
 
+translation_dict = {
+    'Pointing_Up':'Indicador',
+    'Victory':'Indicador e Médio',
+    'Open_Palm': 'Palma da Mão',
+    'Closed_Fist':'Punho'
+}
+
 pyautogui.PAUSE = 0
 
 mp_hands = mp.solutions.hands
